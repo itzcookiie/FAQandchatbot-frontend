@@ -1,3 +1,23 @@
 .question-and-answers {
     padding: 50px;
 }
+
+.search-panel {
+    text-align: center;
+}
+
+.search-panel__input {
+    border-radius: 10px;
+    padding: 3px;
+}
+
+.FAQ-question-links {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.FAQ-question-links__divider {
+    height: 100px;
+    width: 2px;
+    background-color: blue;
+}

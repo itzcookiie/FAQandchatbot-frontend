@@ -1,20 +1,25 @@
 import React from 'react'
 import { Accordion } from 'semantic-ui-react'
 
-const QuestionAnswerCards = (props) => {
+const QuestionAnswerCards = ({ data }) => {
 
-    const {q} = props
-
-      const mappedPanels = q.map((qns, key) => {
+      const mappedPanels = data.map((topic, key) => {
           return {
               key,
-              title: qns.category,
+              title: {
+                  content: topic.category,
+                  id: topic.category
+              },
               content: {
                   content: (<div>
-                        <Accordion.Accordion panels={qns.questionsAndAnswers.map((qandA,key2) => ({
+                        <Accordion.Accordion id={key} panels={topic.questionsAndAnswers.map((qandA,key2) => ({
                                 key: key2, 
                                 title: qandA.question, 
-                                content: qandA.answer 
+                                content: {
+                                    content: qandA.answer,
+                                    id: qandA.question.split(' ').join('-')
+                                },
+                                index: key2 
                             })
                                 )} />
                       </div>)

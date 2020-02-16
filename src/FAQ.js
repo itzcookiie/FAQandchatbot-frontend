@@ -1,34 +1,57 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import QuestionAnswerCards from './QuestionAnswerCards'
+import { connect } from 'react-redux'
+import { getQuestions } from './actions'
+import FilteredQuestionAndAnswerCards from './FilteredQuestionAndAnswerCards'
 
-const FAQ = () => {
-
-    const [qnsAndAnswers, setQnsAndAnswers] = useState([])
+const FAQ = ({ getQuestions, qnsAndAnswers=[], relatedCategories=[] }) => {
 
     useEffect(() => {
-        fetch('http://localhost:8000/')
-        .then(r => r.json())
-        .then(setQnsAndAnswers)
+        getQuestions()
     }, [])
 
     return (
         <div>
             <h2>FAQ</h2>
-            <div className="question-links">
-                <div className="categories-list">
+            <div className="FAQ-question-links">
+                <div className="FAQ-question-links__categories-list">
                     <h3>Categories</h3>
+                    <ul>
+                        {qnsAndAnswers.map((qnsAndAnswer, key) => (
+                            <li key={key}>
+                                <a href={`#${qnsAndAnswer.category}`}>{qnsAndAnswer.category}</a>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
-                <div className="popular-qns-list">
+                <span className="FAQ-question-links__divider"></span>
+                <div className="FAQ-question-links__popular-qns-list">
                     <h3>Popular questions</h3>
+                    <ol>
+                    {qnsAndAnswers.slice(2,4).map(qnsAndAnswer => 
+                        qnsAndAnswer.questionsAndAnswers.map((qandA, key) => (
+                            <li key={key}>
+                                <a href={`#${qandA.question.split(' ').join('-')}`}>{qandA.question}</a>
+                            </li>
+                        ))
+                    )}
+                    </ol>
                 </div>
             </div>
-            <div className="question-and-answers">
+            <div className="FAQ-question-and-answers">
                 {qnsAndAnswers.length > 0 &&
-                    <QuestionAnswerCards q={qnsAndAnswers} />
+                    relatedCategories.length > 0 ? <FilteredQuestionAndAnswerCards data={relatedCategories}/> : <QuestionAnswerCards data={qnsAndAnswers} />
                 }
             </div>
         </div>
     )
 }
 
-export default FAQ
+const mapStateToProps = state => {
+    return state
+}
+
+export default connect(
+    mapStateToProps,
+    { getQuestions }
+)(FAQ)
