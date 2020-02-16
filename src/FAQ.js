@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import QuestionAnswerCards from './QuestionAnswerCards'
 
 const FAQ = () => {
 
@@ -23,21 +24,7 @@ const FAQ = () => {
             </div>
             <div className="question-and-answers">
                 {qnsAndAnswers.length > 0 &&
-                    <div>
-                        {qnsAndAnswers.map((qnsAndAnswer, key) => (
-                            <div key={key}>
-                                <h2>{qnsAndAnswer.category}</h2>
-                                <ul>
-                                    {qnsAndAnswer.questionsAndAnswers.map((qandA, key2) => (
-                                        <li key={key2}>
-                                            <h4>{qandA.question}</h4>
-                                            <p>{qandA.answer}</p>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))}
-                    </div>
+                    <QuestionAnswerCards q={qnsAndAnswers} />
                 }
             </div>
         </div>
