@@ -1,5 +1,6 @@
 import React from 'react'
 import Support from './Support'
+import './App.css'
 
 const App = () => {
     return (
