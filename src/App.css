@@ -2,8 +2,20 @@
     padding: 50px;
 }
 
-.search-panel {
+.header {
     text-align: center;
+}
+
+.search-panel {
+    background: pink;
+    color: #4183c4;
+    padding: 20px;
+}
+
+.search-panel__container {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 30px;
 }
 
 .search-panel__input {
@@ -21,3 +33,70 @@
     width: 2px;
     background-color: blue;
 }
+
+.display {
+    height: 500px;
+    background-color: #f9e2e6;
+    border-top: 20px solid black;
+    overflow-y: scroll;
+    border-bottom: 20px solid #000000;
+    display: inline-block;
+}
+
+.options-list {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+}
+
+.FAQ__header {
+    background: black;
+    padding: 50px;
+    color: white;
+    text-align: center;
+    border: 30px solid;
+}
+
+.display__top, .display__bottom {
+    height: 10px;
+    background: blue;
+}
+
+.display__convo {
+    list-style: none;
+}
+
+.image-container {
+    width: 50px;
+}
+ 
+img {
+    width: 100%;
+    border-radius: 200px;
+}
+
+.bot-message {
+    background: gray;
+    display: inline-block;
+    border-radius: 10px;
+    width: 300px;
+    padding: 10px;
+}
+
+.account {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.account--user {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 25px;
+}
+
+.user-message {
+    border-radius: 10px;
+    padding: 10px;
+    background-color: greenyellow;
+}
+
